@@ -66,7 +66,7 @@
 <script>
     Swal.fire({
         title: 'Gagal Mendaftar'
-        , text: 'Anda sudah mendaftar pada event ini'
+        , text: "{{session('error')}}"
         , icon: 'error'
     });
 

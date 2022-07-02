@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $events = Event::with(['evCategory'])->orderBy('category')->get();
+        $events = Event::with(['evCategory'])->orderBy('category')->orderBy('registration_start','asc')->get();
         $active = Event::with(['evCategory'])->select('category')->distinct()->get();
         return view('welcome', compact('events', 'active'));
     }

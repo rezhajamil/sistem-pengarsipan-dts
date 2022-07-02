@@ -103,17 +103,28 @@ class EventParticipantController extends Controller
         $event_id = $request->id;
         $user_id = Auth::user()->id;
 
+        $event = Event::find($event_id);
+        $today = date("Y-m-d");
+        $expire = $event->registration_end; //from database
+
+        $today_time = strtotime($today);
+        $expire_time = strtotime($expire);
+
         $is_registered = EventParticipant::where('event', $event_id)->where('user', $user_id)->count();
 
         if ($is_registered) {
-            return back()->with('error', 'Anda Sudah Mendaftar');
+            return back()->with('error', 'Anda sudah mendaftar pada event ini');
         } else {
-            $register = EventParticipant::create([
-                'event' => $event_id,
-                'user' => $user_id,
-            ]);
+            if ($expire_time < $today_time) {
+                return back()->with('error', 'Masa Pendaftaran Telah Lewat');
+            } else {
+                $register = EventParticipant::create([
+                    'event' => $event_id,
+                    'user' => $user_id,
+                ]);
 
-            return back()->with('success', 'Anda Berhasil Mendaftar');
+                return back()->with('success', 'Anda Berhasil Mendaftar');
+            }
         }
     }
 }
