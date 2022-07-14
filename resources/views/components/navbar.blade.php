@@ -44,7 +44,7 @@
                     />
                 </button>
                 <template x-if="isProfileMenuOpen">
-                    <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
+                    <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 z-50 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
                         <li class="flex">
                             <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="{{ route('edit_profile.index') }}">
                                 <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -76,8 +76,8 @@
             <!-- Login/Register menu -->
             <li class="relative">
 
-                <a href="{{ route('login') }}" class="bg-white border-blue-500 border rounded-full text-blue-500 group hover:bg-blue-500 hover:text-white px-4 py-2 flex items-center justify-center gap-x-2 font-bold transition-all dark:border-gray-500 dark:text-gray-500 dark:hover:text-white dark:hover:bg-gray-500">
-                    <svg class="w-6 h-6 inline-block text-blue-500 group-hover:text-white transition-all dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <a href="{{ route('login') }}" class="flex items-center justify-center px-4 py-2 font-bold text-blue-500 transition-all bg-white border border-blue-500 rounded-full group hover:bg-blue-500 hover:text-white gap-x-2 dark:border-gray-500 dark:text-gray-500 dark:hover:text-white dark:hover:bg-gray-500">
+                    <svg class="inline-block w-6 h-6 text-blue-500 transition-all group-hover:text-white dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                     </svg>
                     Login
@@ -85,8 +85,8 @@
             </li>
             <li class="relative">
 
-                <a href="{{ route('register') }}" class="border-blue-500 border rounded-full text-white bg-blue-500 px-4 py-2 flex items-center justify-center gap-x-2 font-bold dark:border-gray-500 dark:bg-gray-500">
-                    <svg class="w-6 h-6 inline-block text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <a href="{{ route('register') }}" class="flex items-center justify-center px-4 py-2 font-bold text-white bg-blue-500 border border-blue-500 rounded-full gap-x-2 dark:border-gray-500 dark:bg-gray-500">
+                    <svg class="inline-block w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
                     </svg>
                     Register
