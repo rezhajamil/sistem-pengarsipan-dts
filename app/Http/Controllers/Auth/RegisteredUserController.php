@@ -39,8 +39,9 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'phone' => ['required', 'numeric', 'unique:users,phone'],
             'whatsapp' => ['required', 'numeric', 'unique:users,whatsapp'],
+            'address' => ['required'],
             'gender' => ['required'],
-            'avatar' => ['required', 'image', 'max:10240'],
+            'avatar' => ['required', 'image', 'max:2028'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -57,6 +58,7 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'whatsapp' => $request->whatsapp,
             'gender' => $request->gender,
+            'address' => $request->address,
             'company' => $request->company,
             'avatar' => $avatar,
             'role' => 3,

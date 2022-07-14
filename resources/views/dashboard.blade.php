@@ -65,6 +65,7 @@
                                     <th class="px-4 py-3">NIK</th>
                                     <th class="px-4 py-3">Email</th>
                                     <th class="px-4 py-3">Nomor Telepon</th>
+                                    <th class="px-4 py-3">Alamat</th>
                                     <th class="px-4 py-3">Verifikasi Email</th>
                                     @if (auth()->user()->role == 1)
                                     <th class="px-4 py-3">Role</th>
@@ -98,6 +99,7 @@
                                         <td class="px-4 py-3 text-sm">{{ $user->nik }}</td>
                                         <td class="px-4 py-3 text-sm">{{ $user->email }}</td>
                                         <td class="px-4 py-3 text-sm">{{ $user->phone }}</td>
+                                        <td class="px-4 py-3 text-sm">{{ $user->address }}</td>
                                         <td class="px-4 py-3 text-xs">
                                             @if ($user->email_verified_at)
                                             <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
@@ -115,7 +117,7 @@
                                             <form action="{{ route('super.change_role',$user->id) }}" method="post">
                                                 @csrf
                                                 @method('put')
-                                                <button type="submit" class="text-sm text-green-600 font-semibold">Ganti Role</button>
+                                                <button type="submit" class="text-sm font-semibold text-green-600">Ganti Role</button>
                                             </form>
                                         </td>
                                         @endif

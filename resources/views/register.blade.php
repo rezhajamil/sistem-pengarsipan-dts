@@ -3,11 +3,11 @@
 <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
     <div class="flex-1 h-full max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
         <div class="flex flex-col overflow-y-auto md:flex-row">
-            <div class="md:h-auto bg-white md:w-1/2 flex justify-center items-center">
-                <img aria-hidden="true" class="sm:object-cover object-contain w-fit h-fit" src="{{ asset('images/dts.png') }}" alt="Office" />
+            <div class="flex items-center justify-center bg-white md:h-auto md:w-1/2">
+                <img aria-hidden="true" class="object-contain sm:object-cover w-fit h-fit" src="{{ asset('images/dts.png') }}" alt="Office" />
             </div>
             <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
-                <form class="w-full flex flex-col gap-y-2" method="post" action="{{ route('register') }}" x-data="{whatsapp:false,phone:'{{ old('phone') }}'}" enctype="multipart/form-data">
+                <form class="flex flex-col w-full gap-y-2" method="post" action="{{ route('register') }}" x-data="{whatsapp:false,phone:'{{ old('phone') }}'}" enctype="multipart/form-data">
                     @csrf
                     <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
                         Daftar Akun
@@ -27,7 +27,7 @@
                     @enderror
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400">Nomor Induk Kependudukan*</span>
-                        <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="text" name="nik" value="{{ old('nik') }}" required />
+                        <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input" type="number" name="nik" value="{{ old('nik') }}" required />
                     </label>
                     @error('nik')
                     <span class="text-red-500 dark:text-red-500">{{ $message }}</span>
@@ -66,12 +66,19 @@
                     @error('whatsapp')
                     <span class="text-red-500 dark:text-red-500">{{ $message }}</span>
                     @enderror
+                    <label class="block mt-2 text-sm">
+                        <span class="text-gray-700 dark:text-gray-400">Alamat</span>
+                        <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="address" type="text" value="{{ old('address') }}" />
+                    </label>
+                    @error('address')
+                    <span class="text-red-500 dark:text-red-500">{{ $message }}</span>
+                    @enderror
                     <div class="flex gap-x-3">
-                        <label class="flex justify-center items-center gap-x-2 text-sm">
+                        <label class="flex items-center justify-center text-sm gap-x-2">
                             <span class="text-gray-700 dark:text-gray-400">Pria</span>
                             <input class="inline-block mt-1 text-sm dark:border-white dark:bg-white focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-blue-500 dark:focus:shadow-outline-blue form-input" placeholder="081234567890" type="radio" value="Pria" name="gender" checked />
                         </label>
-                        <label class="flex justify-center items-center gap-x-2 text-sm">
+                        <label class="flex items-center justify-center text-sm gap-x-2">
                             <span class="text-gray-700 dark:text-gray-400">Wanita</span>
                             <input class="inline-block mt-1 text-sm dark:border-white dark:bg-white focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-blue-500 dark:focus:shadow-outline-blue form-input" placeholder="081234567890" type="radio" value="Wanita" name="gender" />
                         </label>

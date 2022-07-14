@@ -70,21 +70,24 @@ class EditProfileController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'=>'required',
-            'gender'=>'required',
-            'company'=>'required'
+            'name' => 'required',
+            'gender' => 'required',
+            'company' => 'required',
+            'address' => 'required',
+            'avatar' => 'image|max:2048',
         ]);
 
-        $user=User::find($id);
+        $user = User::find($id);
 
-        if($request->hasFile('avatar')){
-            $image=$request->avatar->store('avatar');
-            $user->avatar=$image;
+        if ($request->hasFile('avatar')) {
+            $image = $request->avatar->store('avatar');
+            $user->avatar = $image;
         }
 
-        $user->name=$request->name;
-        $user->gender=$request->gender;
-        $user->company=$request->company;
+        $user->name = $request->name;
+        $user->gender = $request->gender;
+        $user->company = $request->company;
+        $user->address = $request->address;
         $user->save();
 
         return redirect('/');
